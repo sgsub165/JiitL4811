@@ -1,8 +1,8 @@
 /** 
 * Name: Stephen Griffith
-* Date: 10/24/2018
+* Date: 11/02/2018
 * Source File Name: FemaleComparator.java
-* Lab: Lab3
+* Lab: Lab4
 */
 
 package Lab4;
