@@ -1,0 +1,15 @@
+Welcome to the Bank of IIT
+Data Analytics Result:
+
+Average Income for Females: $28646.32
+Average Income for Males: $27225.83
+
+Number of Females with a Mortgage and Savings Account: 71
+
+INNER_CITY Region, Males with Vehicle & 1 Child: 15
+RURAL Region, Males with Vehicle & 1 Child: 9
+SUBURBAN Region, Males with Vehicle & 1 Child: 3
+TOWN Region, Males with Vehicle & 1 Child: 7
+
+Current date = 2018/11/02 09:49:32
+Programmed by Stephen Griffith 
