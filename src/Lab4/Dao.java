@@ -27,24 +27,24 @@ public class Dao {
 			// Execute create query
 			System.out.println("Creating table in given database...");
 
+//			stmt = conn.connect().createStatement();
+//			String sql1 = "DROP TABLE s_grif_tab";
+//			stmt.executeUpdate(sql1);
+
+			// Execute create query
+			System.out.println("Creating table in given database...");
+
 			stmt = conn.connect().createStatement();
 
-			String sql1 = "DROP TABLE s_grif_tab";
-			stmt.executeUpdate(sql1);
-
-//			// Execute create query
-//			System.out.println("Creating table in given database...");
-//
-//			stmt = conn.connect().createStatement();
-//
-//			String sql = "CREATE TABLE s_grif_tab " 
-//					+ "(pid INTEGER not NULL AUTO_INCREMENT, " 
-//					+ " id VARCHAR(10), " 
-//					+ " income numeric(8,2), " 
-//					+ " pep VARCHAR(3), " 
-//					+ " PRIMARY KEY ( pid ))";
-//			stmt.executeUpdate(sql);
-//			System.out.println("Created table in given database...");
+			String sql = "CREATE TABLE s_grif_tab " 
+					+ "(pid INTEGER not NULL AUTO_INCREMENT, " 
+					+ " id VARCHAR(100), " 
+					+ " income numeric(8,2), " 
+					+ " pep VARCHAR(100), " 
+					+ " PRIMARY KEY ( pid ))";
+			stmt.executeUpdate(sql);
+			System.out.println("Created table in given database...");
+			
 			conn.connect().close(); //close db connection 
 		} catch (SQLException se) {
 			// Handle errors for JDBC
@@ -62,21 +62,16 @@ public class Dao {
 		
 			// Include all object data to the database table
 			for (int i = 0; i < recordObjects.length; ++i) {
-	        
-			// finish string assignment to insert all object data 
-			// (id, income, pep) into your database table
 				
-			sql = "INSERT INTO s_grif_tab(id, income, pep) "
-						+ "VALUES (' \"+recordObjects(i).getId()+\" '"
-						+ ", ' \"+recordObjects(i).get.Income()+\" '"
-						+ ", ' \"+recordObjects(i).getPep()+\" ' )";
-
-		  	
-//			sql = "INSERT INTO s_grif_tab(id, income, pep) \" "
-//					+ "+ \"VALUES (' \"+recordObjects(i).getId()+\" '"
-//					+ ", ' \"+recordObjects(i).get.Income()+\" '"
-//					+ ", ' \"+recordObjects(i).getPep()+\" ' )";
-
+//				System.out.println(recordObjects[i].getId());
+//				System.out.println(recordObjects[i].getIncome());
+//				System.out.println(recordObjects[i].getPep());
+	        				
+				sql = "INSERT INTO s_grif_tab(id, income, pep)"
+					+ "VALUES (' "+recordObjects[i].getId()+" '"
+					+ ", ' "+recordObjects[i].getIncome()+" '"
+					+ ", ' "+recordObjects[i].getPep()+" ' )";
+				
 			stmt.executeUpdate(sql);
 			}
 	        conn.connect().close();
@@ -93,7 +88,7 @@ public class Dao {
 			e.printStackTrace();
 		}
 
-		 String sql = "SELECT * from s_grif_tab";
+		 String sql = "SELECT * FROM s_grif_tab ORDER BY pep DESC";
 		 try {
 			rs = stmt.executeQuery(sql);
 		} catch (SQLException e) {
