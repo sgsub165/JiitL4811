@@ -15,7 +15,7 @@ public class LoadProcessing extends BankRecords {
 		ResultSet rs = dao.retrieveRecords(); // fill result set object
 
 	// Create heading for display
-		System.out.println("ID:");
+		System.out.println("\nID:");
 	
 	// Extract data from result set
 		try {

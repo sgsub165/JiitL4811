@@ -21,21 +21,13 @@ public class Dao {
 	public void createTable() {
 		try {
 			// Open a connection
-			System.out.println("Connecting to a selected database to create Table...");
+			System.out.println("Connecting to a selected database to create table s_grif_tab...");
+			
+			stmt = conn.connect().createStatement();
 			System.out.println("Connected database successfully...");
 			
 			// Execute create query
-			System.out.println("Creating table in given database...");
-
-//			stmt = conn.connect().createStatement();
-//			String sql1 = "DROP TABLE s_grif_tab";
-//			stmt.executeUpdate(sql1);
-
-			// Execute create query
-			System.out.println("Creating table in given database...");
-
-			stmt = conn.connect().createStatement();
-
+			System.out.println("Creating table s_sgrif_tab in given database...");
 			String sql = "CREATE TABLE s_grif_tab " 
 					+ "(pid INTEGER not NULL AUTO_INCREMENT, " 
 					+ " id VARCHAR(100), " 
@@ -43,7 +35,7 @@ public class Dao {
 					+ " pep VARCHAR(100), " 
 					+ " PRIMARY KEY ( pid ))";
 			stmt.executeUpdate(sql);
-			System.out.println("Created table in given database...");
+			System.out.println("Created table s_grif_tab in given database...");
 			
 			conn.connect().close(); //close db connection 
 		} catch (SQLException se) {
@@ -56,8 +48,10 @@ public class Dao {
 	public void insertRecords(BankRecords[] recordObjects) {
 		try {
 			// Execute a query
-			System.out.println("Inserting records into the table...");
+			System.out.println("Connecting to the selected database to insert DB records...");
 			stmt = conn.connect().createStatement();
+			System.out.println("Successfully connected to selected database");
+			System.out.println("Inserting records into the table...");
 			String sql = null;
 		
 			// Include all object data to the database table
@@ -76,6 +70,7 @@ public class Dao {
 			}
 	        conn.connect().close();
 		   } catch (SQLException se) { se.printStackTrace(); }
+		System.out.println("Records inserted into the table successfully...");
 	}
 
 	public ResultSet retrieveRecords() {
