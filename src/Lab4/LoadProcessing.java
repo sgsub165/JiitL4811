@@ -7,26 +7,33 @@
 
 package Lab4;
 
+//imports for sql results, exceptions and date/time stamp
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * The LoadProcessing class contains the main function that 
+ * creates a new bank records object and calls to methods to read
+ * data, connects to the database for processing the database 
+ * records.
+ */
 public class LoadProcessing extends BankRecords {
 		
-	public static void main(String[] args)  {
-		BankRecords br = new BankRecords();
-		br.readData();
-		Dao dao = new Dao();
-		dao.createTable();
-		dao.insertRecords(recordObjects); // perform inserts
-		ResultSet rs = dao.retrieveRecords(); // fill result set object
+	public static void main(String[] args)  {		//main method header
+		BankRecords br = new BankRecords();			//create new bank records object
+		br.readData();								//call to read bank records data
+		Dao dao = new Dao();						//create a new Dao object
+		dao.createTable();							//call to create DB table
+		dao.insertRecords(recordObjects); 			//call to insert DB records
+		ResultSet rs = dao.retrieveRecords(); 		//populate the results set
 		String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());	//Variable for timestamp
         String idMe = ("Current date = "+ timeStamp + "\nProgrammed by Stephen Griffith \n");	//Variable for programmer credit
 
 
-		System.out.println("Records were successfully retrieved.");
-		System.out.println("\nLoan Analysis Report is being generated...");
+		System.out.println("Records were successfully retrieved.");			//alert user about records received status
+		System.out.println("\nLoan Analysis Report is being generated...");	//alert to user about report generation
 		try {
 			Thread.sleep (3000);
 		} catch (InterruptedException e1) {
@@ -40,32 +47,31 @@ public class LoadProcessing extends BankRecords {
 		System.out.println(" -------" + "\t ---------" + "\t-----");
 	
 	// Extract data from result set
-		try {
+		try {	//try block for results getting
 			while (rs.next()) {
 
-				// Retrieve data by column name (i.e., for id,income,pep)
+				// Retrieve data by column name for reporting
 				String id = rs.getString("id");
 				double income = Double.parseDouble(rs.getString("income"));
 				String pep = rs.getString("pep");
 			
 				// Display values for id,income,pep
-				//System.out.println(id + "\t" + income + "\t\t" + pep);
 				System.out.print(id);
 				System.out.printf("\t%,10.2f", income);
 				System.out.println("\t" + pep);
 			  }
-		} catch (SQLException e) {
+		} catch (SQLException e) {	//catch block for SQL errors
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	try {
-		rs.close();
+	try {				//try block for closing results set
+		rs.close();		//close results set
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	} // closes result set object
 	
-	System.out.println("\n" + idMe);
+	System.out.println("\n" + idMe);		//display program credits
 }
 
 }

@@ -5,12 +5,6 @@
 * Lab: Lab4
 */
 
-/**
- * The purpose of this class is to provide methods to connect to the 
- * database (DB), create the DB table, insert records into the DB table,
- * and retrieve the records from the DB.
- */
-
 package Lab4;
 
 //import the ResultSet object, SQL exception and Statement interface
@@ -18,6 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * The purpose of this class is to provide methods to connect to the 
+ * database (DB), create the DB table, insert records into the DB table,
+ * and retrieve the records from the DB.
+ */
 
 public class Dao {			//class header
 
@@ -89,32 +88,32 @@ public class Dao {			//class header
 		System.out.println("    " + recCount + " Records inserted into the table successfully.");	//alert user about insertion status
 	}
 
-		
+	//method to retrieve records	
 	public ResultSet retrieveRecords() {
 		 ResultSet rs = null;
-		 System.out.println("\nConnecting to the BoIIT loan database to retrieve records...");
+		 System.out.println("\nConnecting to the BoIIT loan database to retrieve records...");	//alert user about connect to DB status
 		 try {
-			stmnt = cnct.connect().createStatement();
+			stmnt = cnct.connect().createStatement();		//define connection statement
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 System.out.println("  Successfully connected to the database for record retrieval.");
+		 System.out.println("  Successfully connected to the database for record retrieval.");	//alert user about connect to DB status
 		 
-		 
+		 //sql statement to query the DB for specific record fields
 		 String sql = "SELECT * FROM s_grif_tab ORDER BY pep DESC";
 		 try {
-			rs = stmnt.executeQuery(sql);
+			rs = stmnt.executeQuery(sql);		//execute the sql query statement
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 try {
-			cnct.connect().close();
+			cnct.connect().close();				//close the connection to DB
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 return rs;
+		 return rs;			//return the results set data
 	}
 }
