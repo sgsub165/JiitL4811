@@ -36,7 +36,7 @@ public class BankRecords extends Client {
     static ArrayList<List<String>> recordsArray = new ArrayList<>();   //define the array list to store the record rows and columns
 
     //BankRecords class instance fields
-    private String id;			//DB id field	Primary key
+    private String id;			//DB id field	Client identification
     private int age;			//DB age field	Age of client
     private String gender;			//DB gender field	Gender of client
     private String region;			//DB region field	Region of client residence
