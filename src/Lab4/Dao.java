@@ -36,7 +36,7 @@ public class Dao {			//class header
 			System.out.println("Connecting to the BoIIT loan database to create table s_grif_tab...");	//alert user about DB connection status
 			
 			stmnt = cnct.connect().createStatement();		//assign connection to variable 
-			System.out.println("  Successfully connected to the database.");	//alert user about DB connection status
+			System.out.println("  Successfully connected to the BoIIT loan database.");	//alert user about DB connection status
 			
 			// Execute create query
 			System.out.println("\nCreating table s_sgrif_tab in the BoIIT loan database...");	//alert user about table creation status
@@ -50,7 +50,7 @@ public class Dao {			//class header
 					+ " PRIMARY KEY ( pid ))";
 			
 			stmnt.executeUpdate(sql);		//execute the sql statement
-			System.out.println("  Successfully created table s_grif_tab in given database.");	//alert user about table creation status
+			System.out.println("  Successfully created table s_grif_tab in the BoIIT database.");	//alert user about table creation status
 			
 			cnct.connect().close();			//close DB connection
 		} catch (SQLException se) {			//catch block for JDBC errors
@@ -66,13 +66,13 @@ public class Dao {			//class header
 			// Execute a query
 			System.out.println("\nConnecting to the BoIIT loan database to insert DB records...");	//alert user about insertion status
 			stmnt = cnct.connect().createStatement();		//connection to DB
-			System.out.println("  Successfully connected to the BoIIT loan database.");				//alert user about insertion status
-			System.out.println("Inserting records into the table...");								//alert user about insertion status
-			System.out.println("  Please be patient, this may take a while...");					//alert user about insertion status
+			System.out.println("  Successfully connected to the BoIIT loan database.");			//alert user about insertion status
+			System.out.println("Inserting records into the table s_grif_tab...");				//alert user about insertion status
+			System.out.println("  Please be patient, this may take a while...");				//alert user about insertion status
 			String sql = null;		//initialize sql statement
 		
 			// Include all object data to the database table
-			for (int i = 0; i < 10; ++i) {		//for loop to walk through records for insert with recordObjects.length
+			for (int i = 0; i < recordObjects.length; ++i) {	//for loop to walk through records for insert with recordObjects.length
 	        	
 				//sql statement to insert records data
 				sql = "INSERT INTO s_grif_tab(id, income, pep)"
@@ -85,7 +85,7 @@ public class Dao {			//class header
 			}
 	        cnct.connect().close();			//close DB connection
 		   } catch (SQLException se) { se.printStackTrace(); }
-		System.out.println("    " + recCount + " Records inserted into the table successfully.");	//alert user about insertion status
+		System.out.println("    " + recCount + " Records successfully inserted into the table  s_grif_tab.");	//alert user about insertion status
 	}
 
 	//method to retrieve records	
@@ -98,7 +98,7 @@ public class Dao {			//class header
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 System.out.println("  Successfully connected to the database for record retrieval.");	//alert user about connect to DB status
+		 System.out.println("  Successfully connected to the BoIIT loan database for record retrieval.");	//alert user about connect to DB status
 		 
 		 //sql statement to query the DB for specific record fields
 		 String sql = "SELECT * FROM s_grif_tab ORDER BY pep DESC";

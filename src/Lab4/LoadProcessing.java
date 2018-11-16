@@ -22,17 +22,25 @@ import java.util.Calendar;
 public class LoadProcessing extends BankRecords {
 		
 	public static void main(String[] args)  {		//main method header
+		
+		String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());	//Variable for timestamp
+        String idMe = ("Current date = "+ timeStamp + "\nProgrammed by Stephen Griffith \n");	//Variable for programmer credit
+        
+        System.out.println("\n" + idMe);		//display program credits
+		
+		System.out.println("\tWelcome to the Bank of IIT (BoIIT) Loan Processing\n");	//Bank of IIT Banner
+		
 		BankRecords bnkrecs = new BankRecords();			//create new bank records object
 		bnkrecs.readData();								//call to read bank records data
 		Dao dao = new Dao();						//create a new Dao object
 		dao.createTable();							//call to create DB table
 		dao.insertRecords(recordObjects); 			//call to insert DB records
 		ResultSet rsltset = dao.retrieveRecords(); 		//populate the results set
-		String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());	//Variable for timestamp
-        String idMe = ("Current date = "+ timeStamp + "\nProgrammed by Stephen Griffith \n");	//Variable for programmer credit
+		//String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());	//Variable for timestamp
+        //String idMe = ("Current date = "+ timeStamp + "\nProgrammed by Stephen Griffith \n");	//Variable for programmer credit
 
 
-		System.out.println("Records were successfully retrieved.");			//alert user about records received status
+		System.out.println("Records were successfully retrieved.");		//alert user about records received status
 		System.out.println("\nLoan Analysis Report is being generated...");	//alert to user about report generation
 		try {
 			Thread.sleep (3000);
@@ -71,7 +79,7 @@ public class LoadProcessing extends BankRecords {
 		e.printStackTrace();
 	} // closes result set object
 	
-	System.out.println("\n" + idMe);		//display program credits
+	//System.out.println("\n" + idMe);		//display program credits
 }
 
 }
