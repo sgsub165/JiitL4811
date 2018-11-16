@@ -90,7 +90,7 @@ public class Dao {			//class header
 
 	//method to retrieve records	
 	public ResultSet retrieveRecords() {
-		 ResultSet rs = null;
+		 ResultSet rsltset = null;
 		 System.out.println("\nConnecting to the BoIIT loan database to retrieve records...");	//alert user about connect to DB status
 		 try {
 			stmnt = cnct.connect().createStatement();		//define connection statement
@@ -103,7 +103,7 @@ public class Dao {			//class header
 		 //sql statement to query the DB for specific record fields
 		 String sql = "SELECT * FROM s_grif_tab ORDER BY pep DESC";
 		 try {
-			rs = stmnt.executeQuery(sql);		//execute the sql query statement
+			rsltset = stmnt.executeQuery(sql);		//execute the sql query statement
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,6 +114,6 @@ public class Dao {			//class header
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 return rs;			//return the results set data
+		 return rsltset;			//return the results set data
 	}
 }

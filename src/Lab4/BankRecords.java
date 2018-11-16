@@ -134,9 +134,9 @@ public class BankRecords extends Client {
     @Override
     public void readData() {
         
-        BufferedReader br = null;       //define the BufferedReader variable and initialize to null
+        BufferedReader bfrdr = null;       //define the BufferedReader variable and initialize to null
         try {                           //try statement to catch an incorrect or missing file
-            br = new BufferedReader(new FileReader (new File ("bank-Detail.csv")));     //open the file for reading
+            bfrdr = new BufferedReader(new FileReader (new File ("bank-Detail.csv")));     //open the file for reading
             } catch (FileNotFoundException e) {
             //e.printStackTrace();
             System.out.println("The file to read was not found.\nPlease check the file name and location.");
@@ -144,7 +144,7 @@ public class BankRecords extends Client {
             //System.out.println("The file to read was not found.\nPlease check the file name and location.");
             String line;	      	//define the variable line to read line by line in the file
         try {
-            while ((line=br.readLine()) != null) {      //while loop set to read file to the end of file
+            while ((line=bfrdr.readLine()) != null) {      //while loop set to read file to the end of file
                 recordsArray.add(Arrays.asList(line.split(",")));       //add each line of the file to the ArrayList with comma separators
             }
                 } catch (IOException e) {

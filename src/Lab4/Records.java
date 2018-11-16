@@ -37,8 +37,8 @@ public class Records extends BankRecords{
 	    //the main method of the Records class creates a Records object
 		//calls the methods to read data and perform analytics
 	public static void main(String[] args)  {
-        Records br = new Records();				//create Records object br
-        br.readData();							//call the read data method
+        Records bnkrecs = new Records();				//create Records object bnkrecs
+        bnkrecs.readData();							//call the read data method
         //call functions to perform analytics 
     	    AverageIncome();  				// analyze average income for females and males
     	    CompareFemaleMortgage();		// analyze females with mortgage and savings account

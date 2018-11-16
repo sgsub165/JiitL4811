@@ -22,12 +22,12 @@ import java.util.Calendar;
 public class LoadProcessing extends BankRecords {
 		
 	public static void main(String[] args)  {		//main method header
-		BankRecords br = new BankRecords();			//create new bank records object
-		br.readData();								//call to read bank records data
+		BankRecords bnkrecs = new BankRecords();			//create new bank records object
+		bnkrecs.readData();								//call to read bank records data
 		Dao dao = new Dao();						//create a new Dao object
 		dao.createTable();							//call to create DB table
 		dao.insertRecords(recordObjects); 			//call to insert DB records
-		ResultSet rs = dao.retrieveRecords(); 		//populate the results set
+		ResultSet rsltset = dao.retrieveRecords(); 		//populate the results set
 		String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());	//Variable for timestamp
         String idMe = ("Current date = "+ timeStamp + "\nProgrammed by Stephen Griffith \n");	//Variable for programmer credit
 
@@ -48,12 +48,12 @@ public class LoadProcessing extends BankRecords {
 	
 	// Extract data from result set
 		try {	//try block for results getting
-			while (rs.next()) {
+			while (rsltset.next()) {
 
 				// Retrieve data by column name for reporting
-				String id = rs.getString("id");
-				double income = Double.parseDouble(rs.getString("income"));
-				String pep = rs.getString("pep");
+				String id = rsltset.getString("id");
+				double income = Double.parseDouble(rsltset.getString("income"));
+				String pep = rsltset.getString("pep");
 			
 				// Display values for id,income,pep
 				System.out.print(id);
@@ -65,7 +65,7 @@ public class LoadProcessing extends BankRecords {
 			e.printStackTrace();
 		}
 	try {				//try block for closing results set
-		rs.close();		//close results set
+		rsltset.close();		//close results set
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
