@@ -34,8 +34,14 @@ public class Dao {			//class header
 		try {		//try catch block for table creation
 			// Open a connection to the DB and alert user about connection status
 			System.out.println("Connecting to the BoIIT loan database to create table s_grif_tab...");	//alert user about DB connection status
-			
+			try {
 			stmnt = cnct.connect().createStatement();		//assign connection to variable 
+			
+			} catch(Exception e) {
+				System.out.println("Connection to DB server failed...\nPlease verify server is operational...");
+				System.out.println("Program is terminating.");
+				System.exit(0);
+			}
 			System.out.println("  Successfully connected to the BoIIT loan database.");	//alert user about DB connection status
 			
 			// Execute create query

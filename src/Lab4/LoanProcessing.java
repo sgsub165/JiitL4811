@@ -14,12 +14,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * The LoadProcessing class contains the main function that 
+ * The LoanProcessing class contains the main function that 
  * creates a new bank records object and calls to methods to read
  * data, connects to the database for processing the database 
  * records.
  */
-public class LoadProcessing extends BankRecords {
+public class LoanProcessing extends BankRecords {
 		
 	public static void main(String[] args)  {		//main method header
 		
